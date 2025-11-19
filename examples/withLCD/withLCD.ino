@@ -1,3 +1,13 @@
+// #include <MAKERLABVN.h>
+// #include <MKE_M15.h>
+// #include <MKL_DFRobotDFPlayerMini.h>
+// #include <MKL_Dabble.h>
+// #include <MKL_IRremote.h>
+#include <MKL_LiquidCrystal_I2C.h>
+// #include <MKL_OneButton.h>
+
+// #include <MKL_LiquidCrystal_I2C.h>
+
 //
 //    FILE: AM2315C.ino
 //  AUTHOR: Rob Tillaart
@@ -17,7 +27,7 @@
 #include "AM2315C.h"
 
 AM2315C DHT;
-
+MKL_LiquidCrystal_I2C lcd(0x27,16,2);
 uint8_t count = 0;
 
 
@@ -32,6 +42,9 @@ void setup()
 
   Wire.begin();
   DHT.begin();
+  lcd.init();
+  lcd.clear();
+  lcd.backlight();
 
   delay(1000);
 }
@@ -62,6 +75,14 @@ void loop()
     Serial.print("\t\t");
     Serial.print(stop - start);
     Serial.print("\t\t");
+
+    lcd.setCursor(0, 0);
+    lcd.print("temp: ");
+    lcd.print(DHT.getTemperature());
+
+    lcd.setCursor(0, 1);
+    lcd.print("humi: ");
+    lcd.print(DHT.getHumidity());
     switch (status)
     {
       case AM2315C_OK:
