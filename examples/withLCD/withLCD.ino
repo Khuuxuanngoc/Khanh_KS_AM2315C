@@ -13,6 +13,8 @@
 //  AUTHOR: Rob Tillaart
 // PURPOSE: Demo for AM2315C I2C humidity & temperature sensor
 //     URL: https://github.com/RobTillaart/AM2315C
+//    TESTER: MinhKhanh614  
+// Other libraries used: MAKERLABVN 
 //
 //  Always check datasheet
 //
